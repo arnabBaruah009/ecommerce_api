@@ -1,5 +1,6 @@
 const Product = require("../../../models/products_schema");
 
+//function to get the list of all products
 module.exports.getProducts = async function (req, res) {
   try {
     let products = await Product.find({});
@@ -16,6 +17,7 @@ module.exports.getProducts = async function (req, res) {
   }
 };
 
+//function to add product
 module.exports.addProduct = async function (req, res) {
   try {
     let product = await Product.create(req.query);
@@ -32,6 +34,7 @@ module.exports.addProduct = async function (req, res) {
   }
 };
 
+//function to delete product
 module.exports.deleteProduct = async function (req, res){
   try {
     let product = await Product.findByIdAndDelete(req.params.id);
@@ -48,6 +51,7 @@ module.exports.deleteProduct = async function (req, res){
   }
 }
 
+//function to update product
 module.exports.updateProduct = async function (req, res){
   try {
     let product = await Product.findByIdAndUpdate(req.params.id, {quantity: req.query.number});
